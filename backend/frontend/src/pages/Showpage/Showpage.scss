@@ -1,0 +1,44 @@
+.Showpage{
+
+}
+.Task__img{
+    position: absolute;
+    bottom: 80px;
+    right:16px;
+    width:50vw;
+}
+.welcome__text{
+    background: radial-gradient(#000000, transparent);
+    color: white;
+    padding: 40px;
+    width:50vw;
+    border-radius:5px;
+}
+.man__img{
+    width:100px;
+    position:absolute;
+    top:20%;
+    left:47%;
+    transform: translate(-50%, -50%) scale(200px);
+    border-radius:10px;
+}
+
+@media (min-width:700px){
+    .Task__img{
+        width:300px;
+    } 
+}
+@media (max-width:919px){
+    .welcome__text{
+        width:auto;
+    }
+    .man__img{
+        width: 30vw;
+        position: absolute;
+        top: 56%;
+        left: 3%;
+        transform: translate(-50%, -50%) scale(200px);
+        border-top-right-radius: 27px;
+        border-bottom-left-radius: 80px;
+    } 
+}

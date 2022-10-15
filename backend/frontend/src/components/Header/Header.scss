@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lato:wght@700&family=Pacifico&family=Patrick+Hand&family=Permanent+Marker&family=Poppins:wght@200&family=Roboto:ital,wght@0,300;0,400;1,300&family=Tangerine&display=swap');
+.Header{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    border-bottom: 1px solid yellowgreen;
+    padding: 0px 20px 0px 20px;
+h1{
+  font-family: 'Permanent Marker', cursive;
+  color: greenyellow;
+   letter-spacing:3px;
+}
+   .link{
+     margin:20px;
+     position: relative;
+    }
+    .link::after{
+      content: "";
+      position: absolute;
+      bottom:-10px;
+      left:0px;
+      background-color: rgb(255, 255, 255);
+      width:0%;
+      height: 3px;
+      border-radius:5px;
+      transition: 300ms;
+    }
+    .link:hover::after{
+      width:100%;
+    }
+}
+
+.btn__logout{
+    background-color:yellowgreen;
+    color:white;
+    border: none;
+    padding: 10px 25px 10px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn__logout:hover{
+  transform: scale(50deg);
+}
+
+.Nav__links{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+@media (max-width:600px) {
+  .Nav__secondDiv{
+    background: rgb(14 31 38 / 48%);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 20;
+    bottom:0px;
+    backdrop-filter: blur(14px);
+    z-index: 2;
+} 
+}

@@ -2,12 +2,17 @@ const express =  require("express")
 require('dotenv').config();
 require("./config/connectdb")
 const app = express()
+const path =  require("path")
 const User = require("./models/user")
 const passport = require("passport")
 const localStrategy = require("passport-local")
 const cors = require("cors")
 const sesssion = require("express-session")
 
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static(path.join(__dirname, "./frontend/build")))
+  app.get("*", (req, res)=> res.sendFile(path.resolve(__dirname, "./",  "frontend", "build", "index.html")))
+}
 
 app.use(sesssion({
   secret:"app",

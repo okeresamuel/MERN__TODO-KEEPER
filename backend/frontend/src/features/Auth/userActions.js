@@ -4,7 +4,7 @@ import axios from "axios"
 export const registerUser = createAsyncThunk("auth/register", async (userInfo, { rejectWithValue }) => {
 try {
 
-let response = await axios.post('http://localhost:3000/api/users/register', userInfo)
+let response = await axios.post('api/users/register', userInfo)
 if(response.data){
  localStorage.setItem("user", JSON.stringify(response.data))   
  return response.data 
@@ -20,7 +20,7 @@ if(response.data){
 export const loginUser = createAsyncThunk("auth/login", async (userInfo, { rejectWithValue }) => {
     try {
     
-    let response = await axios.post('http://localhost:3000/api/users/login', userInfo)
+    let response = await axios.post('api/users/login', userInfo)
     if(response.data){
       localStorage.setItem("user", JSON.stringify(response.data))   
       return response.data 

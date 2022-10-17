@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-db = process.env.mongodburl
+db = "mongodb+srv://okere:7218@cluster0.ljvwzic.mongodb.net/?retryWrites=true&w=majority"
  try {
     mongoose.connect(db) ? console.log(`connected`) : "mongoose connection error"  
  } catch (error) {

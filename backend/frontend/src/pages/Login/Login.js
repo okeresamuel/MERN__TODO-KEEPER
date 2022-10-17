@@ -29,7 +29,8 @@ const {error, loading,  user} = useSelector( state => state.auth )
 
 useEffect(()=>{
   if(error){
-    toast.error("something went wrong please check your internet email or passcode")
+    toast.error(error)
+    dispatch(reset())
   }
 if(user){
    navigate("/")

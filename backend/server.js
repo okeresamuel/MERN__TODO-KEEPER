@@ -1,6 +1,6 @@
 const express =  require("express")
 require('dotenv').config();
-const mongoose = require("mongoose")
+require("./config/connectdb")
 const app = express()
 const User = require("./models/user")
 const passport = require("passport")
@@ -8,12 +8,6 @@ const localStrategy = require("passport-local")
 const cors = require("cors")
 const sesssion = require("express-session")
 
-db = process.env.mongodburl
- try {
-    mongoose.connect(db) ? console.log(`connected`) : "mongoose connection error"  
- } catch (error) {
-   console.log(error)  
- }
 
 app.use(sesssion({
   secret:"app",

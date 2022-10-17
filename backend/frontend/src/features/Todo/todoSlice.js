@@ -6,7 +6,8 @@ const initialState = {
     loading: false,
     error: false,
     success: false,
-    message: ""
+    message: "",
+    checked: false
 }
 
 const todoSlice = createSlice({
@@ -63,7 +64,6 @@ const todoSlice = createSlice({
       state.loading = false
       state.error = false
       state.success = true
-      state.message = action.payload
      },
      [deleteTodo.rejected]: (state, action)=>{
       state.loading = false

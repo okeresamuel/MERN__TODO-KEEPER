@@ -47,29 +47,31 @@ export const deleteTodo = createAsyncThunk("delete/Todo", async(id, thunkAPI, re
           Authorization: `Bearer ${token}`      
         }
     }
-    axios.delete(`http://localhost:3000/api/todos/${id}`, config)
-
+   const deleted = await axios.delete(`http://localhost:3000/api/todos/${id}`, config)
+   return deleted
   } catch (error) {
     return rejectWithValue(error.response.data)
    }
 })
 
 // update todo from back
+
 export const updateTodo = createAsyncThunk("update/Todo", async(id, thunkAPI, rejectWithValue)=>{
-  alert("gjh")
   try {
+
   const token = thunkAPI.getState().auth.user.token
 
   const config ={
     headers:{
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
+      "Accept": "application/json",
     }
   }
-  
-  const updatedTodo = await axios.put(`http://localhost:3000/api/todos${id}`,  config )
-  console.log(updatedTodo)
+ 
+ const updatedTodo = await axios.put(`http://localhost:3000/api/todos/${id}`,{text:"hekko"},  config )
 } catch (error) {
   return rejectWithValue(error)
 }
 
 })
+

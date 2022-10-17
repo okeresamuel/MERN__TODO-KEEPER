@@ -56,7 +56,6 @@ const delete__todos = asyncHandler(async(req, res)=>{
      const foundUser = await todos.find({user: req.user.id})
      const [user] = foundUser 
     // check for user
-    console.log(user)
     if(!user){
         res.status(401)
         throw new Error, "User not found"

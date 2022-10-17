@@ -6,14 +6,15 @@ import {postTodo, getTodo, deleteTodo, updateTodo} from "../../features/Todo/tod
 import Loader from "../Loader/Loader"
 import Trashcan from "../../assets/images/trashCan.png"
 import updateIcon from "../../assets/images/settings.png"
+import moment from "moment"
+import {reset} from "../../features/Todo/todoSlice"
 
 function Todo() {
  const [availableTodo, setTodo] = useState("")
- const dispatch = useDispatch()
- const {loading,error, todo} = useSelector((state)=> state.todo)
+ const  dispatch = useDispatch()
+ const {loading,error, todo,} = useSelector((state)=> state.todo)
 
-
-useEffect(()=>{
+ useEffect(()=>{
 if(error){
  toast.error("something went wrong please try again") 
 }
@@ -35,36 +36,41 @@ toast.success("item added")
 }
 
 
-//delete todo to backend 
-
  return (
   <>
   <h1>Enter your todo </h1>
-  
+ 
   <form>
   <div>
   <input  className="todo__input" placeholder="Enter Stuffs to dolo" name="text" onChange={(e)=>{setTodo(e.target.value)}} required></input>
   </div>
   <button onClick={sendTodo} className="addTodo__btn">Add to list</button>
- </form>
+  </form>
 
    
+   <form>
    <section>
    {todo.length <= 0 ? <h3>You have no available task todo</h3> : todo.map((todo)=>{
     return (
+     
      <div className="todo" key={todo._id}>
      <div className="todoInner__container">
-     <span> {todo.text} <p>{`Created On ${todo.createdAt.slice(0, 10)}`}</p></span>
-     
+     <span> 
+      {todo.text} 
+      <p>{`Created ${moment(todo.createdAt).fromNow()}`}</p>
+      </span>
      <div>
+      
+
      <button><img className="trashCan__img" src={Trashcan} alt="trashcan__img" onClick={(()=>{dispatch(deleteTodo(todo._id))})}/></button>
-     <button><img className="update__icon" src={updateIcon} alt="Update__icon" onClick={(()=>{dispatch(updateTodo(todo._id))})}/></button>
+     {/* <button><img className="update__icon" src={updateIcon} alt="Update__icon" onClick={(()=>{dispatch(updateTodo(todo._id))})}/></button> */}
      </div>
    </div>
   </div>
   )
 })}
  </section>
+ </form>
 {loading ? <Loader /> : ""}
 </> 
 )

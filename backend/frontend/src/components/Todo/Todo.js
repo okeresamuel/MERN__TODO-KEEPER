@@ -2,17 +2,16 @@ import {useState, useEffect} from "react"
 import "../Todo/Todo.scss"
 import {useDispatch, useSelector} from "react-redux"
 import { toast } from "react-toastify"
+import {reset} from "../../features/Todo/todoSlice"
 import {postTodo, getTodo, deleteTodo, updateTodo} from "../../features/Todo/todoAction"
 import Loader from "../Loader/Loader"
-import Trashcan from "../../assets/images/trashCan.png"
-import updateIcon from "../../assets/images/settings.png"
 import moment from "moment"
-import {reset} from "../../features/Todo/todoSlice"
+import Onetodo from "./Onetodo/Onetodo"
 
 function Todo() {
  const [availableTodo, setTodo] = useState("")
  const  dispatch = useDispatch()
- const {loading,error, todo,} = useSelector((state)=> state.todo)
+ const {loading,error, todo} = useSelector((state)=> state.todo)
 
  useEffect(()=>{
 if(error){
@@ -40,37 +39,24 @@ toast.success("item added")
   <>
   <h1>Enter your todo </h1>
  
-  <form>
+ 
   <div>
   <input  className="todo__input" placeholder="Enter Stuffs to dolo" name="text" onChange={(e)=>{setTodo(e.target.value)}} required></input>
   </div>
   <button onClick={sendTodo} className="addTodo__btn">Add to list</button>
-  </form>
+
 
    
-   <form>
+  
    <section>
-   {todo.length <= 0 ? <h3>You have no available task todo</h3> : todo.map((todo)=>{
-    return (
-     
-     <div className="todo" key={todo._id}>
-     <div className="todoInner__container">
-     <span> 
-      {todo.text} 
-      <p>{`Created ${moment(todo.createdAt).fromNow()}`}</p>
-      </span>
-     <div>
-      
-
-     <button><img className="trashCan__img" src={Trashcan} alt="trashcan__img" onClick={(()=>{dispatch(deleteTodo(todo._id))})}/></button>
-     {/* <button><img className="update__icon" src={updateIcon} alt="Update__icon" onClick={(()=>{dispatch(updateTodo(todo._id))})}/></button> */}
-     </div>
-   </div>
-  </div>
-  )
-})}
+   {todo.length > 0 ? (
+    <div>
+      {todo.map((todo)=>(
+        <Onetodo key={todo._id} todo={todo} moment={moment}/>
+      ))}
+    </div>
+   ) : (<h3>You do not have togo</h3>)}
  </section>
- </form>
 {loading ? <Loader /> : ""}
 </> 
 )
@@ -81,5 +67,22 @@ export default Todo
 
 
 
+// {todo.length <= 0 ? <h3>You have no available task todo</h3> : todo.map((todo)=>{
+//   return (
+   
+//    <div className="todo" key={todo._id}>
+//    <div className="todoInner__container">
+//    <span> 
+//     {todo.text} 
+ 
+//     </span>
+//    <div>
+    
 
+
+//    </div>
+//  </div>
+// </div>
+// )
+// })}
  

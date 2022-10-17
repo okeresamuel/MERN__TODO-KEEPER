@@ -9,10 +9,7 @@ const localStrategy = require("passport-local")
 const cors = require("cors")
 const sesssion = require("express-session")
 
-if(process.env.NODE_ENV === "production"){
-  app.use(express.static(path.join(__dirname, "./frontend/build")))
-  app.get("*", (req, res)=> res.sendFile(path.resolve(__dirname, "./",  "frontend", "build", "index.html")))
-}
+
 
 app.use(sesssion({
   secret:"app",
@@ -29,6 +26,11 @@ app.use(express.urlencoded({limit:"30mb", extended:false}))
 app.use(express.json())
 app.use("/", require("./routes/todos"))
 app.use("/", require("./routes/users"))
+
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static(path.join(__dirname, "./frontend/build")))
+  app.get("*", (req, res)=> res.sendFile(path.resolve(__dirname, "./",  "frontend", "build", "index.html")))
+}
 
 const port = process.env.PORT || 3000
 app.listen(port, console.log(`listing on port ${port}`))

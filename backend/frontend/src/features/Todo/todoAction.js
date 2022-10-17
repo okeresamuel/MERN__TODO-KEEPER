@@ -48,7 +48,7 @@ export const deleteTodo = createAsyncThunk("delete/Todo", async(id, thunkAPI, re
         }
     }
    const deleted = await axios.delete(`http://localhost:3000/api/todos/${id}`, config)
-   return deleted
+   return deleted.data
   } catch (error) {
     return rejectWithValue(error.response.data)
    }
@@ -68,7 +68,7 @@ export const updateTodo = createAsyncThunk("update/Todo", async(id, thunkAPI, re
     }
   }
  
- const updatedTodo = await axios.put(`https://todo-app-myreactapp.herokuapp.com/api/todos/${id}`,{text:"hekko"},  config )
+ const updatedTodo = await axios.put(`http://localhost:3000/api/todos/${id}`,{text:"hekko"},  config )
 } catch (error) {
   return rejectWithValue(error)
 }

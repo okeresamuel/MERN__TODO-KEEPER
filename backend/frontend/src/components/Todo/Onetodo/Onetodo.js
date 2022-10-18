@@ -10,6 +10,7 @@ const  dispatch = useDispatch()
 
 
   return (
+    <form>
     <div className="todo" key={todo._id}>
         <div className="todoInner__container">
         <p>
@@ -18,6 +19,7 @@ const  dispatch = useDispatch()
         </div>
       <button><img className="trashCan__img" src={Trashcan} alt="trashcan__img" onClick={(()=>{dispatch(deleteTodo(todo._id), dispatch(reset()))})}/></button>
     </div>
+    </form>
   )
 }
 export default Onetodo

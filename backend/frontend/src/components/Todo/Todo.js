@@ -40,11 +40,12 @@ toast.success("item added")
   <h1>Enter your todo </h1>
  
  
+ <form>
   <div>
   <input  className="todo__input" placeholder="Enter Stuffs to dolo" name="text" onChange={(e)=>{setTodo(e.target.value)}} required></input>
   </div>
   <button onClick={sendTodo} className="addTodo__btn">Add to list</button>
-
+  </form>
 
    
   

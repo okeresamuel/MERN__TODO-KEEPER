@@ -10,6 +10,13 @@ body {
   object-fit: cover;
   color:white;
 }
+body::-webkit-scrollbar{
+  width:12px;
+}
+body::-webkit-scrollbar-thumb{
+  border-radius:10px;
+ background-color: yellowgreen;
+}
 a{
   text-decoration:none;
   color:rgb(255, 255, 255);

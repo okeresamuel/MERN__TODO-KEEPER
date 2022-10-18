@@ -63,7 +63,7 @@ const todoSlice = createSlice({
       state.loading = false
       state.error = false
       state.success = true
-      state.todo = state.todo.filter((i) => i._id !== action.payload.id)
+      state.todo = action.payload;
      },
      [deleteTodo.rejected]: (state, action)=>{
       state.loading = false

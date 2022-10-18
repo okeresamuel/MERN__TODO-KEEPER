@@ -2,11 +2,11 @@ import {useState, useEffect} from "react"
 import "../Todo/Todo.scss"
 import {useDispatch, useSelector} from "react-redux"
 import { toast } from "react-toastify"
-import {reset} from "../../features/Todo/todoSlice"
-import {postTodo, getTodo, deleteTodo, updateTodo} from "../../features/Todo/todoAction"
+import {postTodo, getTodo, deleteTodo,} from "../../features/Todo/todoAction"
 import Loader from "../Loader/Loader"
+import Trashcan from "../../assets/images/trashCan.png"
 import moment from "moment"
-import Onetodo from "./Onetodo/Onetodo"
+
 
 function Todo() {
  const [availableTodo, setTodo] = useState("")
@@ -36,30 +36,42 @@ toast.success("item added")
 
 
  return (
-  <>
+  <div className="Todo__container">
   <h1>Enter your todo </h1>
  
- 
- <form>
+  <form>
   <div>
   <input  className="todo__input" placeholder="Enter Stuffs to dolo" name="text" onChange={(e)=>{setTodo(e.target.value)}} required></input>
   </div>
   <button onClick={sendTodo} className="addTodo__btn">Add to list</button>
-</form>
+  </form>
 
    
-  
+   <form>
    <section>
-   {todo.length > 0 ? (
+   {todo.length >= 0 ? (
     <div>
-      {todo.map((todo)=>(
-        <Onetodo key={todo._id} todo={todo} moment={moment}/>
+      {todo.map( todo => (
+            <div className="todo" key={todo._id}>
+            <div className="todoInner__container">
+            <span> 
+             {todo.text} 
+             <p>{`Created ${moment(todo.createdAt).fromNow()}`}</p>
+             </span>
+            <div>
+             
+       
+            <button><img className="trashCan__img" src={Trashcan} alt="trashcan__img" onClick={(()=>{dispatch(deleteTodo(todo._id))})}/></button>
+            </div>
+          </div>
+         </div>
       ))}
     </div>
-   ) : (<h3>You do not have togo</h3>)}
+   ): (<h3>You do not have any todo </h3>)}
  </section>
+ </form>
 {loading ? <Loader /> : ""}
-</> 
+</div> 
 )
 
 }
@@ -68,22 +80,5 @@ export default Todo
 
 
 
-// {todo.length <= 0 ? <h3>You have no available task todo</h3> : todo.map((todo)=>{
-//   return (
-   
-//    <div className="todo" key={todo._id}>
-//    <div className="todoInner__container">
-//    <span> 
-//     {todo.text} 
- 
-//     </span>
-//    <div>
-    
 
-
-//    </div>
-//  </div>
-// </div>
-// )
-// })}
  

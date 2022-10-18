@@ -38,3 +38,13 @@ input:focus {
     width:30px;
     cursor: pointer;
 }
+.Todo__container{
+    width: 600px;
+    margin: auto;
+}
+@media (max-width:700px){
+    .Todo__container{
+        width: 100%;
+        margin: auto;
+    }
+}

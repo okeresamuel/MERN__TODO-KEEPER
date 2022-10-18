@@ -13,7 +13,7 @@ try {
        "Content-Type": "application/json"
       },
  };
- const response = await axios.post("http://localhost:3000/api/todos", data, config)
+ const response = await axios.post("api/todos", data, config)
  return response.data
 } catch (error) {
   return rejectWithValue(error.response.data)
@@ -31,7 +31,7 @@ export const  getTodo = createAsyncThunk("todo/addTodo", async ( _, thunkAPI, re
      Authorization: `Bearer ${token}`
    }  
   }
-  const response = await axios.get("http://localhost:3000/api/todos", config)
+  const response = await axios.get("api/todos", config)
   return response.data  
  } catch (error) {
   return rejectWithValue(error.response.data)
@@ -47,7 +47,7 @@ export const deleteTodo = createAsyncThunk("delete/Todo", async(id, thunkAPI, re
           Authorization: `Bearer ${token}`      
         }
     }
-   const deleted = await axios.delete(`http://localhost:3000/api/todos/${id}`, config)
+   const deleted = await axios.delete(`api/todos/${id}`, config)
    return deleted.data
   } catch (error) {
     return rejectWithValue(error.response.data)
@@ -68,7 +68,7 @@ export const updateTodo = createAsyncThunk("update/Todo", async(id, thunkAPI, re
     }
   }
  
- const updatedTodo = await axios.put(`http://localhost:3000/api/todos/${id}`,{text:"hekko"},  config )
+ const updatedTodo = await axios.put(`api/todos/${id}`,{text:"hekko"},  config )
 } catch (error) {
   return rejectWithValue(error)
 }

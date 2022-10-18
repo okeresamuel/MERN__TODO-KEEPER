@@ -45,7 +45,7 @@ toast.success("item added")
   <input  className="todo__input" placeholder="Enter Stuffs to dolo" name="text" onChange={(e)=>{setTodo(e.target.value)}} required></input>
   </div>
   <button onClick={sendTodo} className="addTodo__btn">Add to list</button>
-  </form>
+</form>
 
    
   

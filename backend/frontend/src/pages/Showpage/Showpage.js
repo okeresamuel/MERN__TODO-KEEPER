@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom"
 import {useEffect} from "react"
 import TaskImg from "../../assets/images/TaskIcon.png"
 import ManImg from "../../assets/images/man.webp"
+import Savebox__Img from "../../assets/images/Save box.png"
 import "../Showpage/Showpage.scss"
 
 function Showpage() {
@@ -18,12 +19,12 @@ function Showpage() {
 
   return (
     <div className="Showpage">
-       <img className="Task__img" src={TaskImg} alt="bulb img"/>
-       <img className="man__img" src={ManImg} alt="bulb img"/>
+       <img className="Task__img" src={TaskImg} alt="task img"/>
+       <img className="man__img"  src={ManImg} alt="man img"/>
+       <img className="savebox__img" src={Savebox__Img} alt="savebox img"/>
       <div className="welcome__text">
       <h2>Hello ! Welcome on Board</h2>
       <p>Create a Task edit a task and delete a task</p>
-  
       </div>
     </div>
   )

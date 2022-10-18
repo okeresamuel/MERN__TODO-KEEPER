@@ -56,8 +56,8 @@ toast.success("item added")
             <div className="todoInner__container">
             <span> 
              {todo.text} 
-             <p>{`Created ${moment(todo.createdAt).fromNow()}`}</p>
-             </span>
+            <p>{`Created ${moment(todo.createdAt).fromNow()}`}</p>
+            </span>
             <div>
              
        

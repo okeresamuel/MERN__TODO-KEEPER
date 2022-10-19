@@ -24,7 +24,7 @@ function Showpage() {
        <img className="savebox__img" src={Savebox__Img} alt="savebox img"/>
       <div className="welcome__text">
       <h2>Hello ! Welcome on Board</h2>
-      <p>Create a Task edit a task and delete a task</p>
+      <p>Create a Task, Save a task and delete a task</p>
       </div>
     </div>
   )

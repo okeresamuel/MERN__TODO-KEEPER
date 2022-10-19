@@ -29,7 +29,7 @@ const {error, loading,  user} = useSelector( state => state.auth )
 
 useEffect(()=>{
   if(error){
-    toast.error(error)
+    toast.error(`${error} `)
     dispatch(reset())
   }
 if(user){
@@ -58,7 +58,7 @@ function stopRefresh(event){
     <>
     <h1>Login . . . </h1>
     {loading ? <Loader /> : ""}
-    <form onSubmit={stopRefresh}>
+    <form onSubmit={stopRefresh} >
      <div className='input__container'>
      <label for="username">username</label>
      <input className="input" name='username' id='username' value={username} placeholder=" Name" onChange={setFields}></input>

@@ -3,14 +3,14 @@ const todos = require("../models/todos")
 const User = require("../models/user")
 
 
-// decs get all goals
+// decs get all todo
 const get__todos = asyncHandler(async(req, res) => {
  const foundtodos = await todos.find({user: req.user.id})
  const [user] = foundtodos
  res.status(200).json(foundtodos)
 })
 
-// make a goal
+// make a todo
 const post__todos = asyncHandler(async (req, res) => {
     if(!req.body){
         res.status(400)
@@ -20,7 +20,7 @@ const post__todos = asyncHandler(async (req, res) => {
   res.status(200).json(newtodo)
 })
 
-// desc Update goal route
+// desc Update todo route
 const update__todos = asyncHandler(async (req, res)=>{
     try {
         const foundUser = await todos.find({user: req.user.id})
